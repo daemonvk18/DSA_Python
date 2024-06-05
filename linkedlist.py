@@ -11,6 +11,7 @@ class LinkedList:
         self.tail = new_Node
         self.length = 1
         
+        
     def print_list(self)->None:
         temp = self.head
         while temp is not None:
