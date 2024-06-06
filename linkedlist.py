@@ -20,6 +20,7 @@ class LinkedList:
             
             
     def append(self,value:int)->bool:
+        
         new_Node = Node(value)
         if self.head is None:
             self.head = new_Node
