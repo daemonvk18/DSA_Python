@@ -57,6 +57,7 @@ class LinkedList:
 
 
     def pop_first(self):
+        
         if self.length == 0:
             return None
         temp = self.head
