@@ -112,15 +112,28 @@ class LinkedList:
         prev.next = temp.next
         temp.next = None
         self.length -= 1
-        return temp   
+        return temp
+
+    def reversell(self):
+        prev = self.head
+        self.head = self.tail
+        self.tail = prev
+        balance = None
+        temp = prev.next
+        for _ in range(self.length):
+            temp = prev.next
+            prev.next = balance
+            balance = prev
+            prev = temp
+
+
+
                             
 
                        
 my_linked_list = LinkedList(4)
-print(my_linked_list.head)
-print(my_linked_list.tail)
-print(my_linked_list.length)
-my_linked_list.print_list()
-my_linked_list.append(11) 
-my_linked_list.print_list()
-print(my_linked_list.pop())       
+my_linked_list.append(11)
+my_linked_list.append(23) 
+my_linked_list.append(7)
+my_linked_list.reversell()
+my_linked_list.print_list()     
