@@ -41,12 +41,54 @@ class DoubelyLinkedList:
             self.tail.next = None
             temp.prev = None
         self.length -= 1
-        return temp.value       
+        return temp.value
+
+
+    def prepend(self,value):
+        newNode = Node(value)
+        if self.head is None:
+            self.head = newNode
+            self.tail = newNode
+        else:
+            newNode.next = self.head
+            self.head.prev = newNode
+            self.head = newNode
+        self.length += 1
+        return True
+
+    def pop_first(self):
+        if self.head is None:
+            return None
+        temp = self.head
+        if self.head.next is None:
+            self.head = None
+            self.tail = None
+        else:
+            self.head = self.head.next
+            temp.next = None
+            self.head.prev = None
+        self.length -= 1
+        return temp
+
+
+    def get(self,index):
+        if index<0 or index>=self.length:
+            return None
+        temp = self.head
+        if index < self.length/2:
+            for _ in range(index):
+                temp = temp.next
+        else:
+            temp = self.tail
+            for _ in range(self.length-1,index,-1):
+                temp = temp.prev
+        return temp.value                                          
 
 
 my_doubley_linkedlist = DoubelyLinkedList(11)
 my_doubley_linkedlist.append(3)
-my_doubley_linkedlist.printList()
-print(my_doubley_linkedlist.pop()) 
-print(my_doubley_linkedlist.pop()) 
+my_doubley_linkedlist.append(23)
+my_doubley_linkedlist.append(7)
+my_doubley_linkedlist.append(4)
+print(my_doubley_linkedlist.get(2))
 my_doubley_linkedlist.printList()              
