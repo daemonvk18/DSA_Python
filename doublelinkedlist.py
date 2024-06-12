@@ -82,7 +82,55 @@ class DoubelyLinkedList:
             temp = self.tail
             for _ in range(self.length-1,index,-1):
                 temp = temp.prev
-        return temp.value                                          
+        return temp.value
+
+
+    def set_value(self,index,value):
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
+
+
+    def insert(self,index,value):
+        if index <0 or index>self.length:
+            return False
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append(value)
+        newNode = Node(value)
+        prev = self.get(index-1)
+        temp = prev.next
+
+        newNode.prev = prev
+        newNode.next = temp
+        prev.next = newNode
+        temp.prev = newNode
+
+        self.length += 1
+        return True
+    
+
+    def remove(self,index):
+        if index<0 or index>=self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        if index == self.length-1:
+            return self.pop()
+        
+        temp = self.get(index)
+
+        temp.next.prev = temp.prev
+        temp.prev.next = temp.next
+        temp.next = None
+        temp.prev = None
+
+        self.length -= 1
+        return temp
+
 
 
 my_doubley_linkedlist = DoubelyLinkedList(11)
