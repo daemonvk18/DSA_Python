@@ -19,4 +19,4 @@ A **stack** follows Last In, First Out (LIFO):
 - **Pop**: Remove from the top.
 - **Peek**: View the top element.
 
-These concise definitions capture the essentials of each data structure.
+
