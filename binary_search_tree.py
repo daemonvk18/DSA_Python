@@ -32,7 +32,6 @@ class BinarySeachTree:
 
 
     def contains(self,value)->bool:
-        if self.root==None:return False
         temp = self.root
         while temp is not None:
             if temp.value == value:return True
