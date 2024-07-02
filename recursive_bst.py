@@ -72,7 +72,12 @@ class BinarySearchTree:
             current_Node.right = self.__r_delete(current_Node.right,value)
         else:
             #here comes the diffferent scenarios to delete a node(leafnode,node containing left,containing right,both)
-            print("delete")
+            if current_Node.left == None and current_Node.right == None:
+                return None
+            elif current_Node.left ==None and current_Node.right != None:
+                current_Node = current_Node.right
+            elif current_Node.left != None and current_Node.right == None:
+                current_Node = current_Node.left    
         return current_Node             
 
 
