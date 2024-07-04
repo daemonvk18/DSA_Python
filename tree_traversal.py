@@ -41,7 +41,44 @@ class BinarySearchTree:
             if self.queue[0].right != None:   
                self.queue.append(self.queue[0].right)
             self.queue.pop(0)
-        return self.result                    
+        return self.result
+
+
+    def DFS_preorder(self):
+        self.results = []
+        def traverse(current_node):
+            self.results.append(current_node.value)
+            if current_node.left is not None:
+                traverse(current_node.left)
+            if current_node.right is not None:
+                traverse(current_node.right)
+
+        traverse(self.root)
+        return self.results
+
+
+    def DFS_postorder(self):
+        self.postresults = []
+        def post_traverse(current_node)->None:
+            if current_node.left is not None:
+                post_traverse(current_node.left)
+            if current_node.right is not None:
+                post_traverse(current_node.right)
+            self.postresults.append(current_node.value)
+        post_traverse(self.root)
+        return self.postresults
+
+
+    def DFS_inorder(self):
+        self.inorderresults = []
+        def inorder_intraverse(current_node):
+            if current_node.left is not None:
+                inorder_intraverse(current_node.left)
+            self.inorderresults.append(current_node.value)
+            if current_node.right is not None:
+                inorder_intraverse(current_node.right)
+        inorder_intraverse(self.root)
+        return self.inorderresults                                                        
 
 
 my_bst = BinarySearchTree()
@@ -53,3 +90,6 @@ my_bst.insert(27)
 my_bst.insert(52)
 my_bst.insert(82)
 print(my_bst.BFS())
+print(my_bst.DFS_preorder())
+print(my_bst.DFS_postorder())
+print(my_bst.DFS_inorder())
