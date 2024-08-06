@@ -12,12 +12,15 @@ def swap(my_list,index1,index2):
     my_list[index1] = my_list[index2]
     my_list[index2] = temp
 
-def quick_sort(my_list,left,right):
+def quick_sort_helper(my_list,left,right):
     if left<right:
       pivot_index = pivot_finder(my_list,left,right)
       pivot_finder(my_list,left,pivot_index-1)
       pivot_finder(my_list,pivot_index+1,right)
     return my_list
 
-print(quick_sort([4,6,1,7,3,2,5],0,6))             
+def quick_sort(my_list):
+    return quick_sort_helper(my_list,0,len(my_list)-1)
+
+print(quick_sort([4,6,1,7,3,2,5]))             
 
